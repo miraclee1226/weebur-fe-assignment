@@ -1,10 +1,17 @@
-import Card from "@/components/common/Card";
+"use client";
+
 import Image from "next/image";
+import { useViewMode } from "@/hooks/useViewMode";
+import { GridView, ListView } from "@/components/pages/main";
+import { useProductsQuery } from "@/hooks/useProductsQuery";
 
 export default function Home() {
+  const viewMode = useViewMode();
+  const { data } = useProductsQuery(50, 0);
+
   return (
     <main className="m-auto w-[1200px]">
-      {/* 검색 */}
+      {/* TODO: 검색 필터 구현 */}
       <form className="flex px-4 py-2 items-center w-[1080px] h-16 bg-white rounded-full  border-2 border-gray-200 m-auto mb-5">
         <label htmlFor="searchInput">
           <Image
@@ -27,7 +34,7 @@ export default function Home() {
           검색
         </button>
       </form>
-
+      {/* TODO: 별점 내림차순 구현 */}
       <div className="flex justify-between items-center mb-5">
         <span>총 97개</span>
         <div className="flex gap-2">
@@ -37,40 +44,11 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 상품 리스트 */}
-      <div className="flex justify-between">
-        <Card>
-          <Card.Image src={"/assets/images/dummy.jpg"} alt="alt" />
-          <Card.Rating rating={3.4} />
-          <Card.Title>title</Card.Title>
-          <Card.Content>description</Card.Content>
-          <Card.Review count={100} />
-        </Card>
-
-        <Card>
-          <Card.Image src={"/assets/images/dummy.jpg"} alt="alt" />
-          <Card.Rating rating={3.4} />
-          <Card.Title>title</Card.Title>
-          <Card.Content>description</Card.Content>
-          <Card.Review count={100} />
-        </Card>
-
-        <Card>
-          <Card.Image src={"/assets/images/dummy.jpg"} alt="alt" />
-          <Card.Rating rating={3.4} />
-          <Card.Title>title</Card.Title>
-          <Card.Content>description</Card.Content>
-          <Card.Review count={100} />
-        </Card>
-
-        <Card>
-          <Card.Image src={"/assets/images/dummy.jpg"} alt="alt" />
-          <Card.Rating rating={3.4} />
-          <Card.Title>title</Card.Title>
-          <Card.Content>description</Card.Content>
-          <Card.Review count={100} />
-        </Card>
-      </div>
+      {viewMode === "grid" ? (
+        <GridView products={data?.products} />
+      ) : (
+        <ListView products={data?.products} />
+      )}
     </main>
   );
 }

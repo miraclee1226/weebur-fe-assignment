@@ -6,6 +6,10 @@ interface ReviewProps {
 }
 
 const Review = ({ count, className = "", ...props }: ReviewProps) => {
+  if (count === undefined || count === null) {
+    return null;
+  }
+
   return (
     <div className={`flex items-center gap-[2px] ${className}`} {...props}>
       <Image
@@ -14,7 +18,7 @@ const Review = ({ count, className = "", ...props }: ReviewProps) => {
         height={16}
         alt="말풍선 아이콘"
       />
-      <span>후기 {count !== undefined ? `${count}개` : ""}</span>
+      <span>후기 {count}개 </span>
     </div>
   );
 };
