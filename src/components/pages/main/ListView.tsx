@@ -2,7 +2,7 @@ import Card from "@/components/common/Card";
 import { Product } from "@/utils/api.types";
 
 interface ListViewProps {
-  products: Product[] | undefined;
+  products: Product[];
 }
 
 const ListView = ({ products }: ListViewProps) => {

@@ -3,11 +3,21 @@
 import Image from "next/image";
 import { useViewMode } from "@/hooks/useViewMode";
 import { GridView, ListView } from "@/components/pages/main";
-import { useProductsQuery } from "@/hooks/useProductsQuery";
+import { useProductsInfiniteQuery } from "@/hooks/useProductsInfiniteQuery";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 export default function Home() {
   const viewMode = useViewMode();
-  const { data } = useProductsQuery(50, 0);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useProductsInfiniteQuery();
+  const products = data?.pages.flatMap((page) => page.products) ?? [];
+  const loadMoreRef = useIntersectionObserver({
+    onIntersect: () => {
+      if (hasNextPage && !isFetchingNextPage) {
+        fetchNextPage();
+      }
+    },
+  });
 
   return (
     <main className="m-auto w-[1200px]">
@@ -45,9 +55,19 @@ export default function Home() {
       </div>
 
       {viewMode === "grid" ? (
-        <GridView products={data?.products} />
+        <GridView products={products} />
       ) : (
-        <ListView products={data?.products} />
+        <ListView products={products} />
+      )}
+
+      {isFetchingNextPage ? <p>로딩중...</p> : <div ref={loadMoreRef} />}
+
+      {!hasNextPage && (
+        <div className="my-10">
+          <p className="text-center text-gray-500 ">
+            더 이상 불러올 데이터가 없습니다.
+          </p>
+        </div>
       )}
     </main>
   );
