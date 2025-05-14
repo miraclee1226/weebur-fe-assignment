@@ -7,12 +7,25 @@ import {
 import { getProducts } from "@/utils/api";
 import { ProductsResponse } from "@/utils/api.types";
 
+interface ProductsQueryParams {
+  limit?: number;
+  q?: string;
+}
+
+const LIMIT = 20;
+
 export const useProductsInfiniteQuery = (
-  limit = 20
+  params: ProductsQueryParams
 ): UseInfiniteQueryResult<InfiniteData<ProductsResponse>> => {
+  const { limit = LIMIT, q } = params;
   const options = infiniteQueryOptions({
-    queryKey: ["products", { limit }],
-    queryFn: ({ pageParam = 0 }) => getProducts(limit, pageParam),
+    queryKey: ["products", { limit, q }],
+    queryFn: ({ pageParam = 0 }) =>
+      getProducts({
+        skip: pageParam,
+        limit,
+        q,
+      }),
     getNextPageParam: (lastPage) => {
       const { skip, limit, total } = lastPage;
       const nextSkip = skip + limit;
