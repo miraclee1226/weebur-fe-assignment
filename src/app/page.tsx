@@ -16,7 +16,11 @@ export default function Home() {
   const { searchParams, setSearchParams } = useCustomSearchParams();
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
-    useProductsInfiniteQuery({ q: searchParams.search });
+    useProductsInfiniteQuery({
+      q: searchParams.search,
+      sortBy: searchParams.sortBy,
+      order: searchParams.order,
+    });
   const products = data?.pages.flatMap((page) => page.products) ?? [];
   const total = data?.pages[0]?.total;
 
@@ -45,6 +49,11 @@ export default function Home() {
     setSearchParams(newParams);
 
     await new Promise((resolve) => setTimeout(resolve, 300));
+  };
+
+  const handleSort = (sortBy: string, order: string) => {
+    const newParams = { ...searchParams, sortBy, order };
+    setSearchParams(newParams);
   };
 
   useEffect(() => {
@@ -85,13 +94,30 @@ export default function Home() {
         </button>
       </form>
 
-      {/* TODO: 별점 내림차순 구현 */}
       <div className="flex justify-between items-center mb-5">
         <span>총 {total}개</span>
         <div className="flex gap-2">
-          <span>후기순</span>
-          <span>|</span>
-          <span>추천순</span>
+          <button
+            onClick={() => handleSort("price", "asc")}
+            className={`${
+              searchParams.sortBy === "price" && searchParams.order === "asc"
+                ? "text-blue-500 font-bold"
+                : ""
+            } cursor-pointer`}
+          >
+            가격 낮은순
+          </button>
+          <span className="text-gray-300">|</span>
+          <button
+            onClick={() => handleSort("rating", "desc")}
+            className={`${
+              searchParams.sortBy === "rating" && searchParams.order === "desc"
+                ? "text-blue-500 font-bold"
+                : ""
+            } cursor-pointer`}
+          >
+            별점 높은순
+          </button>
         </div>
       </div>
 
