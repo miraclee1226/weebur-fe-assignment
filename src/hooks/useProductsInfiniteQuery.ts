@@ -10,6 +10,8 @@ import { ProductsResponse } from "@/utils/api.types";
 interface ProductsQueryParams {
   limit?: number;
   q?: string;
+  sortBy?: string;
+  order?: string;
 }
 
 const LIMIT = 20;
@@ -17,14 +19,16 @@ const LIMIT = 20;
 export const useProductsInfiniteQuery = (
   params: ProductsQueryParams
 ): UseInfiniteQueryResult<InfiniteData<ProductsResponse>> => {
-  const { limit = LIMIT, q } = params;
+  const { limit = LIMIT, q, sortBy, order } = params;
   const options = infiniteQueryOptions({
-    queryKey: ["products", { limit, q }],
+    queryKey: ["products", { limit, q, sortBy, order }],
     queryFn: ({ pageParam = 0 }) =>
       getProducts({
         skip: pageParam,
         limit,
         q,
+        sortBy,
+        order,
       }),
     getNextPageParam: (lastPage) => {
       const { skip, limit, total } = lastPage;
