@@ -6,9 +6,9 @@ import {
   useSuspenseInfiniteQuery,
   UseSuspenseInfiniteQueryResult,
 } from "@tanstack/react-query";
-import { getProducts } from "@/utils/api";
-import { ProductsResponse } from "@/utils/api.types";
 import { LIMIT } from "@/constant/common";
+import { ProductsResponse } from "@/api/products.types";
+import { getProducts } from "@/api/products";
 
 interface ProductsQueryParams {
   limit?: number;

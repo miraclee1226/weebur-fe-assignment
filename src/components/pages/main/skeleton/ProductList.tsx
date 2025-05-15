@@ -1,5 +1,5 @@
+import { ViewMode } from "@/types/common";
 import CardSkeleton from "./Card";
-import { ViewMode } from "@/utils/api.types";
 
 interface SkeletonItemProps {
   viewMode: ViewMode | null;

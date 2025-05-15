@@ -3,7 +3,7 @@ import {
   VIEW_MODE_KEY,
   VIEW_MODE_TIMESTAMP_KEY,
 } from "@/constant/common";
-import { ViewMode } from "@/utils/api.types";
+import { ViewMode } from "@/types/common";
 
 const isViewMode = (value: string | null) => {
   return value === "grid" || value === "list";
