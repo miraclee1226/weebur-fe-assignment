@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getViewMode, saveViewMode } from "@/lib/storage";
+import { getViewMode, saveViewMode } from "@/utils/storage/viewMode";
 import { ViewMode } from "@/types/common";
 
 /**
