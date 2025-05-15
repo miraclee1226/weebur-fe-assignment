@@ -1,10 +1,11 @@
+import {
+  ONE_DAY_MS,
+  VIEW_MODE_KEY,
+  VIEW_MODE_TIMESTAMP_KEY,
+} from "@/constant/common";
 import { ViewMode } from "@/utils/api.types";
 
-const VIEW_MODE_KEY = "view mode";
-const VIEW_MODE_TIMESTAMP_KEY = "view mode timestamp";
-const ONE_DAY_MS = 24 * 60 * 60 * 1000;
-
-const isViewMode = (value: string | null): value is ViewMode => {
+const isViewMode = (value: string | null) => {
   return value === "grid" || value === "list";
 };
 
