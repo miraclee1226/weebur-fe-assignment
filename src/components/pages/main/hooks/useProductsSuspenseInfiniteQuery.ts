@@ -1,11 +1,14 @@
+"use client";
+
 import {
   InfiniteData,
   infiniteQueryOptions,
-  useInfiniteQuery,
-  UseInfiniteQueryResult,
+  useSuspenseInfiniteQuery,
+  UseSuspenseInfiniteQueryResult,
 } from "@tanstack/react-query";
-import { getProducts } from "@/utils/api";
-import { ProductsResponse } from "@/utils/api.types";
+import { LIMIT } from "@/constant/common";
+import { ProductsResponse } from "@/api/products.types";
+import { getProducts } from "@/api/products";
 
 interface ProductsQueryParams {
   limit?: number;
@@ -14,11 +17,9 @@ interface ProductsQueryParams {
   order?: string;
 }
 
-const LIMIT = 20;
-
-export const useProductsInfiniteQuery = (
+export default function useProductsSuspenseInfiniteQuery(
   params: ProductsQueryParams
-): UseInfiniteQueryResult<InfiniteData<ProductsResponse>> => {
+): UseSuspenseInfiniteQueryResult<InfiniteData<ProductsResponse>> {
   const { limit = LIMIT, q, sortBy, order } = params;
   const options = infiniteQueryOptions({
     queryKey: ["products", { limit, q, sortBy, order }],
@@ -38,5 +39,5 @@ export const useProductsInfiniteQuery = (
     initialPageParam: 0,
   });
 
-  return useInfiniteQuery(options);
-};
+  return useSuspenseInfiniteQuery(options);
+}

@@ -1,18 +1,18 @@
 import { ReactNode } from "react";
 
-interface ContentProps {
+interface ItemProps {
   children: ReactNode;
   className?: string;
 }
 
-export default function Content({
+export default function Item({
   children,
   className = "",
   ...props
-}: ContentProps) {
+}: ItemProps) {
   return (
-    <p className={`${className}`} {...props}>
+    <div className={`animate-pulse ${className}`} {...props}>
       {children}
-    </p>
+    </div>
   );
 }

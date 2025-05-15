@@ -4,15 +4,13 @@ import Rating from "./Rating";
 import Title from "./Title";
 import Content from "./Content";
 import Review from "./Review";
-import Skeleton from "./skeleton";
 
-const Card = Object.assign(Item, {
+const Skeleton = Object.assign(Item, {
   Image,
   Rating,
   Title,
   Content,
   Review,
-  Skeleton,
 });
 
-export default Card;
+export default Skeleton;

@@ -5,7 +5,11 @@ interface RatingProps {
   className?: string;
 }
 
-const Rating = ({ rating, className = "", ...props }: RatingProps) => {
+export default function Rating({
+  rating,
+  className = "",
+  ...props
+}: RatingProps) {
   return (
     <div className={`flex items-center gap-[2px] ${className}`} {...props}>
       <Image
@@ -17,6 +21,4 @@ const Rating = ({ rating, className = "", ...props }: RatingProps) => {
       <span>별점 {rating.toFixed(1)}</span>
     </div>
   );
-};
-
-export default Rating;
+}

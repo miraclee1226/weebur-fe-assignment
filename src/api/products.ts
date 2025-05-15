@@ -1,5 +1,5 @@
-import { axiosRequester } from "@/lib/axios";
-import { ProductsResponse } from "./api.types";
+import axiosRequester from "@/lib/axios";
+import { ProductsResponse } from "./products.types";
 
 interface GetProductsParams {
   limit?: number;

@@ -1,11 +1,11 @@
 import Card from "@/components/common/Card";
-import { Product } from "@/utils/api.types";
+import { Product } from "@/types/product";
 
 interface ListViewProps {
   products: Product[];
 }
 
-const ListView = ({ products }: ListViewProps) => {
+export default function ListView({ products }: ListViewProps) {
   return (
     <div className="flex flex-col gap-10 mb-20">
       {products?.map((product) => {
@@ -22,6 +22,4 @@ const ListView = ({ products }: ListViewProps) => {
       })}
     </div>
   );
-};
-
-export default ListView;
+}

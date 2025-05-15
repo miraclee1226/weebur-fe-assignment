@@ -1,16 +1,18 @@
 import { ReactNode } from "react";
 
-interface Props {
+interface ItemProps {
   children: ReactNode;
   className?: string;
 }
 
-const Item = ({ children, className = "", ...props }: Props) => {
+export default function Item({
+  children,
+  className = "",
+  ...props
+}: ItemProps) {
   return (
     <div className={`${className}`} {...props}>
       {children}
     </div>
   );
-};
-
-export default Item;
+}

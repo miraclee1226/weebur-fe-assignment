@@ -14,12 +14,3 @@ export interface Product {
   rating: number;
   reviews: Review[];
 }
-
-export interface ProductsResponse {
-  products: Product[];
-  total: number;
-  skip: number;
-  limit: number;
-}
-
-export type ViewMode = "grid" | "list";

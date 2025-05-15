@@ -1,3 +1,5 @@
+"use client";
+
 import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
 
 const API = process.env.NEXT_PUBLIC_API_URL;
@@ -14,11 +16,9 @@ interface AxiosRequesterParams<T> {
   options: AxiosRequestConfig<T>;
 }
 
-type AxiosRequester = <K, T = unknown>(
-  params: AxiosRequesterParams<T>
-) => Promise<AxiosResponse<K>>;
-
-export const axiosRequester: AxiosRequester = ({ options }) => {
+export default function axiosRequester<K, T = unknown>({
+  options,
+}: AxiosRequesterParams<T>): Promise<AxiosResponse<K>> {
   const client = axiosInstance({ ...options });
   return client;
-};
+}
