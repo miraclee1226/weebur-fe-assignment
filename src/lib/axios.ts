@@ -1,3 +1,5 @@
+"use client";
+
 import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
 
 const API = process.env.NEXT_PUBLIC_API_URL;

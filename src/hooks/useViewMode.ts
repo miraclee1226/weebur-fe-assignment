@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { getViewMode, saveViewMode } from "@/utils/storage/viewMode";
 import { ViewMode } from "@/types/common";

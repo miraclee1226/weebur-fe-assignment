@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ONE_DAY_MS,
   VIEW_MODE_KEY,

@@ -1,3 +1,5 @@
+"use client";
+
 import { ViewMode } from "@/types/common";
 import CardSkeleton from "./Card";
 
