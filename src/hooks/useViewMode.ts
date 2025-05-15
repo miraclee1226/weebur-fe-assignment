@@ -22,7 +22,7 @@ import { getViewMode, saveViewMode } from "@/lib/storage";
  *   // 리스트 형태로 표시
  * }
  */
-export const useViewMode = () => {
+export const useViewMode = (): ViewMode | null => {
   const [viewMode, setViewMode] = useState<ViewMode | null>(null);
 
   useEffect(() => {
