@@ -37,7 +37,7 @@ export default function useViewMode(): ViewMode | null {
       setViewMode(randomMode);
       saveViewMode(randomMode);
     }
-  }, []);
+  }, [viewMode]);
 
   return viewMode;
 }

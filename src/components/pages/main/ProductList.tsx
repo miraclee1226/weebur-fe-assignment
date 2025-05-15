@@ -39,7 +39,7 @@ export default function ProductList() {
   }
 
   return (
-    <>
+    <main className="m-auto w-[1200px] mt-6">
       <SortButtons
         searchParams={searchParams}
         setSearchParams={setSearchParams}
@@ -65,6 +65,6 @@ export default function ProductList() {
           </p>
         </div>
       )}
-    </>
+    </main>
   );
 }

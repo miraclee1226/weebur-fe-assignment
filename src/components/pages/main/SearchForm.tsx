@@ -19,7 +19,6 @@ export default function SearchForm({
   const {
     register,
     setValue,
-    watch,
     formState: { isSubmitting },
     handleSubmit,
   } = useForm<InputType>({
@@ -29,12 +28,7 @@ export default function SearchForm({
     resolver: zodResolver(InputSchema),
   });
 
-  const searchValue = watch("search");
-  const isSearchEmpty = !searchValue || searchValue.trim().length === 0;
-
   const onSubmit = async (data: InputType): Promise<void> => {
-    if (isSearchEmpty) return;
-
     const newParams = { ...searchParams, search: data.search.trim() };
     setSearchParams(newParams);
 
@@ -48,7 +42,7 @@ export default function SearchForm({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex px-4 py-2 items-center w-[1080px] h-16 bg-white rounded-full border-2 border-gray-200 m-auto my-5"
+      className="flex px-4 py-2 items-center w-[500px] h-14 bg-white rounded-full border-2 border-gray-200"
     >
       <label htmlFor="searchInput">
         <Image
@@ -67,14 +61,10 @@ export default function SearchForm({
       />
       <button
         type="submit"
-        disabled={isSearchEmpty || isSubmitting}
-        className={`rounded-full w-[95px] h-full text-white text-center ${
-          isSearchEmpty || isSubmitting
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-blue-500 hover:bg-blue-600"
-        }`}
+        disabled={isSubmitting}
+        className={`rounded-full w-[95px] h-full text-white text-center bg-blue-500 hover:bg-blue-600`}
       >
-        {isSubmitting ? "처리중..." : "검색"}
+        검색
       </button>
     </form>
   );

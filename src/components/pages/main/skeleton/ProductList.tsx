@@ -11,7 +11,7 @@ export default function ProductListSkeleton({ viewMode }: SkeletonItemProps) {
   const itemCount = viewMode === "grid" ? 20 : 10;
 
   return (
-    <div>
+    <div className="m-auto w-[1200px] mt-6">
       <div className="flex justify-between items-center mb-5">
         <div className="h-6 bg-gray-200 rounded w-20"></div>
         <div className="flex gap-2">
