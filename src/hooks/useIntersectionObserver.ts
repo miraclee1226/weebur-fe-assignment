@@ -19,11 +19,11 @@ interface UseIntersectionObserverParams {
   rootMargin?: string;
 }
 
-export const useIntersectionObserver = ({
+export default function useIntersectionObserver({
   onIntersect,
   threshold = 0,
   rootMargin = "300px",
-}: UseIntersectionObserverParams) => {
+}: UseIntersectionObserverParams) {
   const targetRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -54,4 +54,4 @@ export const useIntersectionObserver = ({
   }, [onIntersect, threshold, rootMargin]);
 
   return targetRef;
-};
+}

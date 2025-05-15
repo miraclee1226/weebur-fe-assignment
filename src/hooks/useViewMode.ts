@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { ViewMode } from "@/utils/api.types";
 import { getViewMode, saveViewMode } from "@/lib/storage";
+import { ViewMode } from "@/types/common";
 
 /**
  * 그리드/리스트 뷰 모드를 관리하는 커스텀 훅
@@ -22,7 +22,7 @@ import { getViewMode, saveViewMode } from "@/lib/storage";
  *   // 리스트 형태로 표시
  * }
  */
-export const useViewMode = (): ViewMode | null => {
+export default function useViewMode(): ViewMode | null {
   const [viewMode, setViewMode] = useState<ViewMode | null>(null);
 
   useEffect(() => {
@@ -38,4 +38,4 @@ export const useViewMode = (): ViewMode | null => {
   }, []);
 
   return viewMode;
-};
+}

@@ -2,12 +2,12 @@
 
 import { useCustomSearchParams } from "@/hooks/useCustomSearchParams";
 import { Suspense } from "react";
-import { ProductList } from "@/components/pages/main/ProductList";
-import { useViewMode } from "@/hooks/useViewMode";
 import { SearchForm } from "@/components/pages/main";
 import ProductListSkeleton from "@/components/pages/main/skeleton/ProductList";
 import ErrorResetBoundary from "@/components/common/ErrorResetBoundary";
 import ErrorFallback from "@/components/common/Fallback/ErrorFallback";
+import ProductList from "@/components/pages/main/ProductList";
+import useViewMode from "@/hooks/useViewMode";
 
 export default function Home() {
   const { searchParams, setSearchParams } = useCustomSearchParams();

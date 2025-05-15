@@ -5,7 +5,11 @@ interface ReviewProps {
   className?: string;
 }
 
-const Review = ({ count, className = "", ...props }: ReviewProps) => {
+export default function Review({
+  count,
+  className = "",
+  ...props
+}: ReviewProps) {
   if (count === undefined || count === null) {
     return null;
   }
@@ -21,6 +25,4 @@ const Review = ({ count, className = "", ...props }: ReviewProps) => {
       <span>후기 {count}개 </span>
     </div>
   );
-};
-
-export default Review;
+}

@@ -12,7 +12,10 @@ interface SearchFormProps {
   setSearchParams: (params: StringRecord) => void;
 }
 
-const SearchForm = ({ searchParams, setSearchParams }: SearchFormProps) => {
+export default function SearchForm({
+  searchParams,
+  setSearchParams,
+}: SearchFormProps) {
   const {
     register,
     setValue,
@@ -75,6 +78,4 @@ const SearchForm = ({ searchParams, setSearchParams }: SearchFormProps) => {
       </button>
     </form>
   );
-};
-
-export default SearchForm;
+}

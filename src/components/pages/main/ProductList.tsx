@@ -1,14 +1,14 @@
 "use client";
 
 import { useCustomSearchParams } from "@/hooks/useCustomSearchParams";
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-import { useViewMode } from "@/hooks/useViewMode";
 import GridView from "./GridView";
 import ListView from "./ListView";
 import SortButtons from "./SortButtons";
 import useProductsSuspenseInfiniteQuery from "./hooks/useProductsSuspenseInfiniteQuery";
+import useViewMode from "@/hooks/useViewMode";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
-export const ProductList = () => {
+export default function ProductList() {
   const viewMode = useViewMode();
   const { searchParams, setSearchParams } = useCustomSearchParams();
 
@@ -67,4 +67,4 @@ export const ProductList = () => {
       )}
     </>
   );
-};
+}

@@ -8,11 +8,11 @@ interface SortButtonsProps {
   total?: number;
 }
 
-const SortButtons = ({
+export default function SortButtons({
   searchParams,
   setSearchParams,
   total,
-}: SortButtonsProps) => {
+}: SortButtonsProps) {
   const handleSort = (sortBy: string, order: string) => {
     const newParams = { ...searchParams, sortBy, order };
     setSearchParams(newParams);
@@ -46,6 +46,4 @@ const SortButtons = ({
       </div>
     </div>
   );
-};
-
-export default SortButtons;
+}

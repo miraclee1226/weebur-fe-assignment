@@ -5,12 +5,14 @@ interface ContentProps {
   className?: string;
 }
 
-const Content = ({ children, className = "", ...props }: ContentProps) => {
+export default function Content({
+  children,
+  className = "",
+  ...props
+}: ContentProps) {
   return (
     <p className={`${className}`} {...props}>
       {children}
     </p>
   );
-};
-
-export default Content;
+}

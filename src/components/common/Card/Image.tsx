@@ -6,7 +6,12 @@ interface CardImageProps {
   className?: string;
 }
 
-const CardImage = ({ src, alt, className = "", ...props }: CardImageProps) => {
+export default function CardImage({
+  src,
+  alt,
+  className = "",
+  ...props
+}: CardImageProps) {
   return (
     <div className={`relative w-[280px] h-[200px] ${className}`} {...props}>
       <Image
@@ -18,6 +23,4 @@ const CardImage = ({ src, alt, className = "", ...props }: CardImageProps) => {
       />
     </div>
   );
-};
-
-export default CardImage;
+}

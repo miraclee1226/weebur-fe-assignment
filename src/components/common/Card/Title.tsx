@@ -5,12 +5,14 @@ interface TitleProps {
   className?: string;
 }
 
-const Title = ({ children, className = "", ...props }: TitleProps) => {
+export default function Title({
+  children,
+  className = "",
+  ...props
+}: TitleProps) {
   return (
     <h4 className={`${className}`} {...props}>
       {children}
     </h4>
   );
-};
-
-export default Title;
+}

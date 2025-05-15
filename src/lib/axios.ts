@@ -14,11 +14,9 @@ interface AxiosRequesterParams<T> {
   options: AxiosRequestConfig<T>;
 }
 
-type AxiosRequester = <K, T = unknown>(
-  params: AxiosRequesterParams<T>
-) => Promise<AxiosResponse<K>>;
-
-export const axiosRequester: AxiosRequester = ({ options }) => {
+export default function axiosRequester<K, T = unknown>({
+  options,
+}: AxiosRequesterParams<T>): Promise<AxiosResponse<K>> {
   const client = axiosInstance({ ...options });
   return client;
-};
+}

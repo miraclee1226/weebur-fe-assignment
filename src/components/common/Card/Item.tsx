@@ -5,12 +5,14 @@ interface ItemProps {
   className?: string;
 }
 
-const Item = ({ children, className = "", ...props }: ItemProps) => {
+export default function Item({
+  children,
+  className = "",
+  ...props
+}: ItemProps) {
   return (
     <div className={`${className}`} {...props}>
       {children}
     </div>
   );
-};
-
-export default Item;
+}

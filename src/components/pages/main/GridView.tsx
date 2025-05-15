@@ -1,11 +1,11 @@
 import Card from "@/components/common/Card";
-import { Product } from "@/utils/api.types";
+import { Product } from "@/types/product";
 
 interface GridViewProps {
   products: Product[];
 }
 
-const GridView = ({ products }: GridViewProps) => {
+export default function GridView({ products }: GridViewProps) {
   return (
     <div className="grid grid-cols-4 gap-x-8 gap-y-20">
       {products?.map((product) => {
@@ -22,6 +22,4 @@ const GridView = ({ products }: GridViewProps) => {
       })}
     </div>
   );
-};
-
-export default GridView;
+}
