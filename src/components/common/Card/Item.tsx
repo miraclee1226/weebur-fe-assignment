@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 
-interface Props {
+interface ItemProps {
   children: ReactNode;
   className?: string;
 }
 
-const Item = ({ children, className = "", ...props }: Props) => {
+const Item = ({ children, className = "", ...props }: ItemProps) => {
   return (
     <div className={`${className}`} {...props}>
       {children}
