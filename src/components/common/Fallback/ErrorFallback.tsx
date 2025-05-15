@@ -13,7 +13,7 @@ export default function ErrorFallback({
   };
 
   return (
-    <div className="m-auto flex h-full items-center justify-center">
+    <div className="m-auto flex h-full items-center justify-center mt-6">
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-2xl-bold text-red-500">오류가 발생했습니다 😢</h1>
         <p className="text-2lg-medium text-custom-black/60">
